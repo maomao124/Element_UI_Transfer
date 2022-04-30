@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<!--
+Project name(项目名称)：Element_UI_Transfer
+  File name(文件名): test3
+  Authors(作者）: mao
+  Author QQ：1296193245
+  GitHub：https://github.com/maomao124/
+  Date(创建日期)： 2022/4/30
+  Time(创建时间)： 20:26
+  Description(描述)： 无
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/element-ui.css">
+    <script src="js/vue.js"></script>
+    <script src="js/element-ui.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <el-transfer
+            v-model="value"
+            :data="data"
+            :filterable="true"
+            :titles="['源', '目标']"
+            :button-texts="['到左边', '到右边']"
+            @change="change">
+    </el-transfer>
+</div>
+
+<script>
+
+    var app = new Vue
+    (
+        {
+            el: "#app",
+            data:
+                {
+                    value: [1, 9],
+                    data:
+                        [
+                            {
+                                key: 0,
+                                label: "选项0",
+                            },
+                            {
+                                key: 1,
+                                label: "选项1",
+                            },
+                            {
+                                key: 2,
+                                label: "选项2",
+                            },
+                            {
+                                key: 3,
+                                label: "选项3",
+                            },
+                            {
+                                key: 4,
+                                label: "选项4",
+                            },
+                        ]
+
+                },
+            methods:
+                {
+                    change: function ()
+                    {
+                        console.log(this.value)
+                    }
+                    ,
+                    init: function ()
+                    {
+                        for (let i = 5; i <= 100; i++)
+                        {
+                            this.data.push(
+                                {
+                                    key: i,
+                                    label: `选项${i}`,
+                                    disabled: i % 4 === 0
+                                }
+                            );
+                        }
+                    }
+                }
+            ,
+            mounted()
+            {
+                this.init();
+            }
+        }
+    )
+</script>
+</body>
+</html>
